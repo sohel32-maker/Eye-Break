@@ -34,15 +34,15 @@ function tone() {
     o.start(now); o.stop(now + 0.2);
   } catch (e) { console.warn('Sound error', e); }
 }
-function beep() {
+function beep(durationSeconds = 5) {
   if (!$('soundOn').checked) return;
   stopSound();
   if (soundData) {
     const a = $('audio'); a.src = soundData; a.loop = true; a.currentTime = 0;
     a.play().catch(() => { $('status').textContent = 'সাউন্ড চালাতে অ্যাপের ভেতরে একবার Preview sound চাপো।'; });
-    soundStopTimer = setTimeout(stopSound, 10000);
+    soundStopTimer = setTimeout(stopSound, durationSeconds * 1000);
   } else {
-    tone(); soundPopTimer = setInterval(tone, 550); soundStopTimer = setTimeout(stopSound, 10000);
+    tone(); soundPopTimer = setInterval(tone, 550); soundStopTimer = setTimeout(stopSound, durationSeconds * 1000);
   }
 }
 async function notify(title, body) {
@@ -58,7 +58,7 @@ function start() { if (timer) return; endAt = Date.now() + left * 1000; timer = 
 function tick() {
   left = Math.max(0, Math.ceil((endAt - Date.now()) / 1000)); show();
   if (left <= 0) {
-    stopTimer(); beep();
+    stopTimer(); beep(mode === 'focus' ? 5 : 2);
     if (mode === 'focus') {
       mode = 'break'; total = cfg().rest; left = total;
       notify('EyePause: বিরতির সময়', `${total} সেকেন্ড দূরে তাকিয়ে চোখকে বিশ্রাম দিন।`);
