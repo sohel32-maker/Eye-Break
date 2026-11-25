@@ -1,1 +1,9 @@
-EyePause PWA source. Host this folder on an HTTPS website, then open its URL in Chrome on Android and choose Install app / Add to Home screen. Notifications need permission. IMPORTANT: browser PWAs cannot guarantee timer alerts while fully closed or suspended by Android; background alerts can be delayed or missed. Custom audio selection lasts only for the current page session. This is a reminder tool, not a treatment for eyesight.
+EyePause – 20:20:20
+Created by MD SOHEL RANA
+Diploma in Engineering, CST
+Contact: ttictok69@gmail.com
+
+Upload the CONTENTS of this folder to the root of your GitHub Pages repository.
+After upload, refresh the installed PWA while online so the new service worker and cached files install.
+Custom audio is saved locally in the browser (max 3 MB). Notification permission is requested by the button.
+Browser/PWA notifications are not guaranteed at exact times if Android suspends the app. Reliable push while fully closed requires a push server.
